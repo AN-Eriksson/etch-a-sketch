@@ -1,25 +1,26 @@
-const gridArea = document.querySelector('#grid');
+const gridArea = document.querySelector('#gridArea');
 
 
 
 gridArea.style.display = 'flex';
-gridArea.style.border = '1px solid black';
+gridArea.style.outline = '1px solid black';
 gridArea.style.flexWrap = 'wrap';
 
-let calculatedWidth = 16 * 16;
+gridArea.style.justifyContent = 'flex-start';
 
-gridArea.style.width = `${calculatedWidth}px`;
+let squaresPerSide = 16; // Sets the grid size - to be prompted of user later
+
+gridArea.style.width = '960px'
+gridArea.style.height = '960px'
+
+for (let i = 0; i < squaresPerSide * squaresPerSide; i++) {
+    const gridItem = document.createElement('div');
+    gridItem.style.flex = `1 0 ${960 / squaresPerSide}px`;
 
 
-for (let i = 0; i < 16; i++) {
-
-    for (let i = 0; i < 16; i++) {
-        const gridItem = document.createElement('div');
-        gridItem.style.width = '16px';
-        gridItem.style.height = '16px';
-        gridItem.style.outline = '1px solid black';
-        gridItem.style.backgroundColor = 'aliceblue';
-        gridArea.appendChild(gridItem);
+    gridItem.style.outline = '1px solid black';
+    gridItem.style.backgroundColor = 'aliceblue';
+    gridArea.appendChild(gridItem);
         
-    }
 }
+

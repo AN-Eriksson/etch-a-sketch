@@ -16,11 +16,11 @@ gridArea.style.height = '960px'
 for (let i = 0; i < squaresPerSide * squaresPerSide; i++) {
     const gridItem = document.createElement('div');
     gridItem.style.flex = `1 0 ${960 / squaresPerSide}px`;
-
-
     gridItem.style.outline = '1px solid black';
-    gridItem.style.backgroundColor = 'aliceblue';
+    
     gridArea.appendChild(gridItem);
-        
+    gridItem.addEventListener('mouseover', () => {
+        gridItem.classList.add('hover')
+    })
 }
 

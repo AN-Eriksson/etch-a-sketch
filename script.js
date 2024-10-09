@@ -31,7 +31,13 @@ function drawGrid(squaresPerSide) {
 
 		// Add event listener to change color on hover
 		gridItem.addEventListener('mouseover', () => {
-			gridItem.classList.add('hover')
+            if (!gridItem.style.backgroundColor) {
+			gridItem.style.backgroundColor = getRandomColor()
+            gridItem.style.opacity = 0.1
+            } else {
+                let currentOpacity = parseFloat(gridItem.style.opacity)
+                gridItem.style.opacity = currentOpacity + 0.1
+            }
 		})
 
 		gridArea.appendChild(gridItem)
@@ -47,13 +53,33 @@ function removeGrid() {
 	}
 }
 
+/**
+ * @description - Generate a random color
+ * @return {string} - Random color in hex format
+ */
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 // Create the grid items with default number of squares
 drawGrid(squaresPerSide)
 
 // Button to change the number of squares
 
 const btn = document.createElement('button')
+btn.style.width = '150px'
+btn.style.height = '50px'
+btn.style.border = '2px solid black'
+btn.style.borderRadius = '15px'
+btn.style.margin = '10px'
+btn.style.backgroundColor = 'aliceblue'
 btn.textContent = 'Clear grid'
+
 btn.addEventListener('click', () => {
     while (true) {
 	    squaresPerSide = prompt('How many squares per side?')

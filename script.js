@@ -20,6 +20,10 @@ gridArea.style.height = `${height}px`;
 
 // Functions
 
+/**
+ * @description -  Draw a grid of squaresPerSide x squaresPerSide
+ * @param {*} squaresPerSide - Number of squares per side
+ */
 function drawGrid(squaresPerSide) {
     for (let i = 0; i < squaresPerSide ** 2; i++) {
         const gridItem = document.createElement('div');
@@ -35,6 +39,9 @@ function drawGrid(squaresPerSide) {
     }
 }
 
+/**
+ * @description - Remove all grid items
+ */
 function removeGrid() {
     while (gridArea.firstChild) {
         gridArea.removeChild(gridArea.firstChild);
@@ -42,8 +49,9 @@ function removeGrid() {
 }
 
 // Create the grid items with default number of squares
-
 drawGrid(squaresPerSide);
+
+// Button to change the number of squares
 
 const btn = document.createElement('button');
 btn.textContent = 'Squares per side?';
